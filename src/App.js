@@ -1,5 +1,7 @@
 import { Provider as PaperProvider, Text, TextInput } from 'react-native-paper';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+
+const estil = 'florida';
 
 const nom = (estil, textAMostrar) => {
   return (
@@ -8,17 +10,23 @@ const nom = (estil, textAMostrar) => {
 }
 
 const dades = (inputs) => {
-  return inputs.map((value, index) => (
-    <TextInput
-      key={index}
-      label={value}
-      placeholder={value}
-    />
-  ));
+  const estilPare = estil === 'florida' ? styles.florida : styles.upv;
+
+  return (
+    <View style={estilPare}>
+      {inputs.map((value, index) => (
+        <TextInput
+          key={index}
+          label={value}
+          placeholder={value}
+        />
+      ))}
+    </View>
+  )
 }
 
 const App = () => {
-  const inputs = ['Email', 'Nom']
+  const inputs = ['Email', 'Nom'];
 
   return (
     <PaperProvider>
