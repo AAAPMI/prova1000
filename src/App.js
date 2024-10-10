@@ -1,13 +1,13 @@
 import { Provider as PaperProvider, Text} from 'react-native-paper';
 
-const nom = () => {
-  return (<Text variant='displayLarge'>Rubén</Text>)
+const nom = (textAMostrar) => {
+  return <Text variant='displayLarge'>{textAMostrar}</Text>
 }
 
 const App = () => {
   return (
     <PaperProvider>
-      {nom()}
+      {nom("Rubén")}
     </PaperProvider>
   );
 }
