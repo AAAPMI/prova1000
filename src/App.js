@@ -7,24 +7,30 @@ const nom = (estil, textAMostrar) => {
   );
 }
 
-const dades = () => {
-  return (
-    <TextInput/>
-  );
+const dades = (inputs) => {
+  return inputs.map((value, index) => (
+    <TextInput
+      key={index}
+      label={value}
+      placeholder={value}
+    />
+  ));
 }
 
 const App = () => {
+  const inputs = ['Email', 'Nom']
+
   return (
     <PaperProvider>
       {nom(styles.text, "Rubén")}
-      {dades()}
+      {dades(inputs)}
     </PaperProvider>
   );
 }
 
 const styles = StyleSheet.create({
   text: {
-    color: 'red',
+    color: 'blue',
     fontStyle: 'italic'
   }
 });
