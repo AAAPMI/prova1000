@@ -1,7 +1,7 @@
 import { Provider as PaperProvider, Text, TextInput } from 'react-native-paper';
 import { StyleSheet, View } from 'react-native';
 
-const estil = 'upv';
+const estil = 'florida';
 
 const nom = (estil, textAMostrar) => {
   return (
@@ -10,17 +10,22 @@ const nom = (estil, textAMostrar) => {
 }
 
 const dades = (inputs) => {
-  const estilPare = estil === 'florida' ? styles.florida : styles.upv;
-  const colorInput = estil === 'florida' ? 'white' : 'orange';
+  const estilPare = () => {
+    return estil === 'florida' ? styles.florida : styles.upv;
+  }
+  
+  const colorInput = () => {
+    return estil === 'florida' ? 'white' : 'orange';
+  }
 
   return (
-    <View style={estilPare}>
+    <View style={estilPare()}>
       {inputs.map((value, index) => (
         <TextInput
           key={index}
           label={value}
           placeholder={value}
-          textColor={colorInput}
+          textColor={colorInput()}
         />
       ))}
     </View>
