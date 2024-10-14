@@ -1,7 +1,8 @@
-import { Provider as PaperProvider, Text, TextInput } from 'react-native-paper';
+import { Provider as PaperProvider, Text, TextInput, Button } from 'react-native-paper';
 import { StyleSheet, View } from 'react-native';
 
 const estil = 'florida';
+const isAdmin = true;
 
 const nom = (estil, textAMostrar) => {
   return (
@@ -32,6 +33,22 @@ const dades = (inputs) => {
   )
 }
 
+const botoSiAdmin = () => {
+  if(!isAdmin)
+    return;
+  
+  return (
+    <Button
+      style={{borderRadius: 0}}
+      icon='format-list-bulleted'
+      textColor='white'
+      buttonColor='blue'
+    >
+      INFORMES
+    </Button>
+  );
+}
+
 const App = () => {
   const inputs = ['Email', 'Nom'];
 
@@ -39,6 +56,7 @@ const App = () => {
     <PaperProvider>
       {nom(styles.text, "Rubén")}
       {dades(inputs)}
+      {botoSiAdmin()}
     </PaperProvider>
   );
 }
