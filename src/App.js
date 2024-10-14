@@ -1,8 +1,8 @@
 import { Provider as PaperProvider, Text, TextInput, Button } from 'react-native-paper';
-import { StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 
 const estil = 'florida';
-const isAdmin = true;
+const isAdmin = false;
 
 const nom = (estil, textAMostrar) => {
   return (
@@ -51,12 +51,35 @@ const botoSiAdmin = () => {
 
 const App = () => {
   const inputs = ['Email', 'Nom'];
+  const moduls2Dam = [
+    { nom: 'DIN', professor: 'Manel', hores: 120 },
+    { nom: 'ADA', professor: 'Roberto', hores: 120 },
+    { nom: 'PMDM', professor: 'Paco', hores: 100 },
+    { nom: 'PSP', professor: 'Roberto', hores: 60 },
+    { nom: 'SGE', professor: 'Belén', hores: 100 },
+    { nom: 'Anglés', professor: 'Caterina', hores: 40 },
+    { nom: 'EIE', professor: 'Ana', hores: 60 },
+    ];
 
   return (
     <PaperProvider>
       {nom(styles.text, "Rubén")}
       {dades(inputs)}
       {botoSiAdmin()}
+      <ScrollView>
+        {moduls2Dam.map((value, index) => {
+          let colorFondo = index % 2 === 0 ? '#F48FB1' : '#F8BBD0';
+          
+          return (
+            <View style={{backgroundColor: colorFondo}}>
+              <Text>{index + 1}</Text>
+              <Text>{value.nom}</Text>
+              <Text>{value.professor}</Text>
+              <Text>{value.hores} hores</Text>
+            </View>
+          );
+        })}
+      </ScrollView>
     </PaperProvider>
   );
 }
